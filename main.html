@@ -1,0 +1,36 @@
+<html>
+
+<script src = "jquery-2.1.4.min.js"></script>
+<head>
+<style>
+#sets{
+	height:500px
+
+}
+</style>
+</head>
+
+<body>
+<select id = "sets" multiple>
+</select>
+<button onclick = "check()" id = "check">Check</button>
+</body>
+
+<script>
+$.getJSON("http://mtgjson.com/json/AllSets.json", function(data){
+	var sets = [];
+	for(var k in data){
+		sets.unshift(k);
+		
+		$('#sets').prepend("<option value = '"+k+"'>"+data[k]["name"]+"</option>");
+	}
+});
+
+var check = function(){
+	
+	var e = $("#sets").val();
+	console.log(e);
+}
+
+</script>
+</html>
